@@ -21,7 +21,11 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   public cargando: boolean = true;
 
 
-  constructor(private usuarioService: UsuarioService, private busquedaService: BusquedasService, private modalImagenService: ModalImagenService) { }
+  constructor(private usuarioService: UsuarioService,
+              private busquedaService: BusquedasService,
+              private modalImagenService: ModalImagenService
+              ) { }
+
   ngOnDestroy(): void {
     this.imgSubs.unsubscribe();
   }
@@ -63,7 +67,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
     this.busquedaService.buscar('usuarios', termino)
                         .subscribe(resultados => {
-                          this.usuarios = resultados;
+                          this.usuarios = resultados as Usuario[];
                         })
   }
 

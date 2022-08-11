@@ -19,6 +19,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
 import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
 import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { MedicoComponent } from './mantenimiento/medicos/medico.component';
 
 
 
@@ -34,7 +36,8 @@ import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.compo
     PerfilComponent,
     UsuariosComponent,
     MedicosComponent,
-    HospitalesComponent
+    HospitalesComponent,
+    MedicoComponent
   ],
   exports: [
     DashboardComponent,
@@ -49,7 +52,8 @@ import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.compo
     RouterModule,
     FormsModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
    ]
 
 })

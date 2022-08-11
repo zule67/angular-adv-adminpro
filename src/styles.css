@@ -22,6 +22,10 @@
   width: 140px;;
 }
 
+.w50 {
+  width: 50px;
+}
+
 .avatar {
   width: 30px;
   border-radius: 100%;
