@@ -1,9 +1,8 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
-import { LoginForm } from '../../interfaces/login-form.interface';
 
 declare const google: any;
 
@@ -13,6 +12,7 @@ declare const google: any;
   styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent implements AfterViewInit{
+
 
   @ViewChild('googleBtn') googleBtn!: ElementRef;
 
@@ -25,6 +25,7 @@ export class LoginComponent implements AfterViewInit{
   constructor(private router : Router,
               private fb: FormBuilder,
               private usuarioService: UsuarioService,
+              private ngZone: NgZone
               ) { }
   ngAfterViewInit(): void {
     this.googleInit();
@@ -47,6 +48,9 @@ export class LoginComponent implements AfterViewInit{
     this.usuarioService.loginGoogle(response.credential)
     .subscribe( resp => {
       console.log({login: resp})
+      this.ngZone.run(() => {
+        this.router.navigateByUrl('/');
+    });
     } )
   }
 

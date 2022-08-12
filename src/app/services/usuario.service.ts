@@ -13,6 +13,7 @@ declare const google: any;
 
 const base_url = environment.base_url;
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -105,7 +106,8 @@ export class UsuarioService {
         .pipe(
           tap( (resp: any)=> {
             console.log(resp)
-            this.guardarLocalStorage(resp.token, resp.menu);
+            //this.guardarLocalStorage(resp.token, resp.menu);
+            localStorage.setItem('token', resp.token)
           })
         )
     }
